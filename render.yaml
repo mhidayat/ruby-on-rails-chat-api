@@ -17,7 +17,7 @@ services:
         fromDatabase:
           name: ruby-chat
           property: connectionString
-      - key: 56283f4afeb45aa07241954247c428d2
+      - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
         value: 2 # sensible default
