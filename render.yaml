@@ -1,0 +1,23 @@
+databases:
+  - name: ruby-chat
+    databaseName: messages_0q15
+    user: messages_0q15_user
+    plan: free
+
+services:
+  - type: web
+    name: mysite
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: postgresql://messages_0q15_user:FF4BaO1weiZ94tefX0qE9XPkxccOt1nT@dpg-cri3gdlumphs73ccoaq0-a/messages_0q15
+        fromDatabase:
+          name: ruby-chat
+          property: connectionString
+      - key: 56283f4afeb45aa07241954247c428d2
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
