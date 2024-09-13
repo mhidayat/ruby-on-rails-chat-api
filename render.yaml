@@ -6,14 +6,14 @@ databases:
 
 services:
   - type: web
-    name: mysite
+    name: ruby-on-rails-chat-api
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"
     envVars:
-      - key: postgresql://messages_0q15_user:FF4BaO1weiZ94tefX0qE9XPkxccOt1nT@dpg-cri3gdlumphs73ccoaq0-a/messages_0q15
+      - key: DATABASE_URL
         fromDatabase:
           name: ruby-chat
           property: connectionString
